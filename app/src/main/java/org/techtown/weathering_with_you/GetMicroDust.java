@@ -8,12 +8,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class GetMicroDust extends AsyncTask<ArrayList<String>, Integer, MicroDust> {
 
@@ -76,24 +78,22 @@ public class GetMicroDust extends AsyncTask<ArrayList<String>, Integer, MicroDus
             microDustUrlBuilder = measuringStationUrl+microDustRealtimeInfoService+"?stationName="+station+"&dataTerm=month&pageNo=1&numOfRows=10&ServiceKey="+serviceKey+"&ver=1.3"+"&_returnType=json";
 
             URL url = new URL(microDustUrlBuilder);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Content-type", "application/json");
+            OkHttpClient client = new OkHttpClient();
+            Request.Builder builder = new Request.Builder().url(url).get();
+            builder.addHeader("Weather", "weather");
 
-            BufferedReader rd;
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            Request request = builder.build();
+            Response response = client.newCall(request).execute();
+            ResponseBody body = null;
 
-            StringBuilder sb = new StringBuilder();
-            String line;
-
-            while ((line = rd.readLine()) != null) {
-                sb.append(line);
+            if(response.isSuccessful()){
+                body = response.body();
+            } else {
+                Log.e(TAG, "Error");
             }
-            rd.close();
-            conn.disconnect();
-
-            String data= sb.toString();
+            String data = body.string();
+            Log.e(TAG, "data: "+data);
 
             // Json parser 를 만들어 만들어진 문자열 데이터를 객체화
             JSONParser parser = new JSONParser();

@@ -8,12 +8,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class GetStation extends AsyncTask<Double, Integer, ArrayList<String>> {
 
@@ -43,24 +45,21 @@ public class GetStation extends AsyncTask<Double, Integer, ArrayList<String>> {
         try {
             URL url = new URL(stationUrlBuilder);
 
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            OkHttpClient client = new OkHttpClient();
+            Request.Builder builder = new Request.Builder().url(url).get();
+            builder.addHeader("Weather", "weather");
 
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Content-type", "application/json");
+            Request request = builder.build();
+            Response response = client.newCall(request).execute();
+            ResponseBody body = null;
 
-            BufferedReader rd;
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            StringBuilder sb = new StringBuilder();
-            String line;
-
-            while ((line = rd.readLine()) != null) {
-                sb.append(line);
+            if(response.isSuccessful()){
+                body = response.body();
+            } else {
+                Log.e(TAG, "Error");
             }
-            rd.close();
-            conn.disconnect();
-
-            String data= sb.toString();
+            String data = body.string();
+            Log.e(TAG, "data: "+data);
 
             // Json parser 를 만들어 만들어진 문자열 데이터를 객체화
             JSONParser parser = new JSONParser();
