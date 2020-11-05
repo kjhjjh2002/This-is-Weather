@@ -50,7 +50,7 @@ public class GetWeather extends AsyncTask<Double, Integer, Weather> {
             URL url = urlBuilder(location);
 
             OkHttpClient client = new OkHttpClient();
-
+            Log.e(TAG, "A");
             Request.Builder builder = new Request.Builder().url(url).get();
             builder.addHeader("Weather", "weather");
 
