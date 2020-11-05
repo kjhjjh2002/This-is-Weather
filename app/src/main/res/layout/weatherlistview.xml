@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="200dp">
+
+
+        <TextView
+            android:id="@+id/weatherListTimeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:textColor="@color/white"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="오전 0시" />
+
+        <ImageView
+            android:id="@+id/weatherListImageView"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:src="@drawable/cloud" />
+
+        <TextView
+            android:id="@+id/weatherListTempTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="15"
+            android:gravity="center"/>
+</LinearLayout>

@@ -1,0 +1,6 @@
+include ':nativetemplates'
+include ':TransCoord'
+include ':json-simple-1.1.1'
+include ':json_simple-1.1'
+include ':app'
+rootProject.name = "Weathering_With_You"

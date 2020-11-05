@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="clearSky">#00bffe</color>
+    <color name="sumCloudSky">#9dc3fd</color>
+    <color name="cloudSky">#cac9cf</color>
+    <color name="rainSky">#6d7079</color>
+
+    <color name="clearSkyN">#0205a8</color>
+    <color name="sumCloudSkyN">#2b33c8</color>
+    <color name="cloudSkyN">#0d213c</color>
+    <color name="rainSkyN">#15151d</color>
+
+    <color name="white">#ffffff</color>
+
+
+</resources>
