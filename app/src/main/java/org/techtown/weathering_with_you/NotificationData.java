@@ -1,5 +1,7 @@
 package org.techtown.weathering_with_you;
 
+import org.techtown.weathering_with_you.weather.Weather;
+
 public class NotificationData {
     private static NotificationData notificationData = null;
 
@@ -13,7 +15,7 @@ public class NotificationData {
     }
 
     int iconId = 0;
-    int backgroundColor = 0;
+    public int backgroundColor = 0;
 
     String nowSkyText = "";
     String nowT3h = "";
@@ -22,4 +24,6 @@ public class NotificationData {
     String nowReh = "";
     String nowPop = "";
     String nowR06 = "";
+
+    public Weather weather;
 }

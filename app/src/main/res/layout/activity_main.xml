@@ -11,7 +11,7 @@
     android:id="@+id/mainBackgroundImageView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activity.MainActivity"
     >
 
     <androidx.appcompat.widget.Toolbar
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="서울특별시"
+        android:text=""
         android:textSize="30sp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="습도"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/mainPrecipitationProbabilityTextView"
@@ -101,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="강수확률"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/mainPrecipitationTextView"
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="강수량"
+            android:text=""
             android:textSize="18sp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +128,7 @@
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:textColor="@color/white"
-        android:text="오늘은 비가 올 예정입니다"
+        android:text=""
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/guideline5"
         tools:layout_editor_absoluteX="0dp" />
@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="기준날짜"
+        android:text=""
         android:textSize="15sp"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/weatherInformationTextView"
@@ -184,7 +184,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weatherInformationTextView"
         app:layout_constraintVertical_bias="0.868" />
-
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/weatherAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3373631751790184/1500709385"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include layout="@layout/activity_weather_drawer"/>
